@@ -1,0 +1,282 @@
+.gradient {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: var(--complementary1);
+  background: linear-gradient(90deg, var(--complementary1) 0%, var(--complementary2) 50%, var(--complementary3) 100%);
+  background-size: cover;
+  filter: sepia(0.8);
+  transition: ease filter 0.5s;
+  cursor: pointer;
+  overflow: hidden;
+}
+.gradient:hover {
+  filter: sepia(0.5);
+}
+.typing {
+  position: relative;
+  width: 80%;
+  align-self: center;
+  user-select: none;
+  pointer-events: none;
+}
+.typingInput {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  outline: none;
+  border: 3px solid var(--pri);
+  padding: 1rem 0.5rem;
+  box-shadow: 0 0 36px -20px rgba(0, 0, 0, 0.503) inset,
+              0 0 40px 20px rgba(0, 0, 0, 0.387);
+  background: rgba(255, 255, 255, 0.673);
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  pointer-events: none;
+}
+
+
+  /* Transition Helpers */
+
+
+.transitionHomeTyping {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: ease transform 0.5s;
+  border-radius: 100%;
+  z-index: 1;
+  transform: translateY(-120%);
+}
+.gradient:hover .transitionHomeTyping,
+.gradient.active .transitionHomeTyping {
+  animation: down 8s infinite ease-out;
+}
+.transitionHomeContainerTyping {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary);
+  background: linear-gradient(0deg, #0256a4  0%, #0083FA 50%,#0256a4 100%);
+  box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.415) inset,
+              0 1px 20px 30px rgba(0, 0, 0, 0.762);
+  border: 1px solid var(--primary) ;
+  border-radius: 5px;
+}
+.transitionHomeContainerTyping::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96%;
+  height: 90%;
+  margin: 2%;
+  border: 1px solid var(--primary) ;
+  border-radius: 5px;
+  background: #40ed4315;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.605) inset, 0 0 1px 1px rgba(0, 0, 0, 0.605);
+}
+.transitionHomeTitleTyping {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  font-size: 3em;
+  color: #40ed43;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.796);
+  transform: translate(0, -50%);
+  cursor: unset;
+  user-select: none;
+}
+.transitionHomeDescriptionTyping {
+  position: absolute;
+  height: 10%;
+  width: 100%;
+  font-size: 1.5rem;
+  left: 0;
+  bottom: 10%;
+  color: #40ed43;
+}
+@keyframes down {
+  0% {
+    transform: translateY(-120%);
+  }
+  50% {
+    transform: translateY(-120%);
+  }
+  80% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-120%);
+  }
+}
+
+
+/* typing Page */
+
+.TypingPage {
+  display: grid;
+  grid-template-areas: "nav nav"
+                        "main main"
+                        "footer footer";
+  grid-template-rows: 10vh 80vh 10vh;
+  background: linear-gradient(90deg, var(--complementary1) 0%, var(--complementary2) 50%, var(--complementary3) 100%);
+  background-size: cover;
+}
+.TypingPage .TypingTable {
+  position: relative;
+  width: 96%;
+  height: 94%;
+  padding: 1% 2%;
+  grid-area: main;
+  background: none;
+  filter: none;
+  cursor: initial;
+}
+.TypingPage .TypingContent {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.TypingPage .TypingInput,
+.TypingPage .TypingWords {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.TypingSmall {
+  position: relative;
+  bottom: 1%;
+  color: var(--tertiary);
+}
+.TypingPage .TypingWordsBg {
+  position: relative;
+  height: 70%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.694);
+  box-shadow: 0 10px 19px -9px black;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.TypingPage .TypingWordsOverflow {
+  position: relative;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.TypingPage .TypingWordsOverflow:before {
+  content: '';
+  z-index: 1;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: ease all 0.5s;
+  width: 30%;
+  height: 100%;
+  background: var(white);
+  background: linear-gradient(90deg, white 5%, rgba(0,0,0,0) 100%);
+}
+.TypingPage .TypingWordsOverflow:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: ease all 0.5s;
+  width: 30%;
+  height: 100%;
+  background: var(white);
+  background: linear-gradient(90deg, rgba(0,0,0,0) 50%, white 95%);
+}
+.TypingPage .TypingWordsContainer {
+  position: absolute;
+  top: calc(50%);
+  transform: translate(5%, -50%);
+  font-size: 6vh;
+  display: flex;
+  flex-direction: row;
+  transition: ease all 0.1s;
+}
+.TypingPage .TypingWordsContainer span {
+  margin-right: 1rem;
+  transition: ease all 0.1s;
+  color: var(--tertiary);
+  opacity: 0.8;
+}
+.TypingPage .TypingWordsContainer span.fail {
+  color: var(--complementary1);
+  opacity: 1;
+}
+.TypingPage .TypingWordsContainer span.good {
+  color: var(--primary);
+  opacity: 1;
+}
+.TypingPage .TypingWordsContainer span.now {
+  opacity: 1;
+  color: black;
+}
+.TypingPage .TypingInputContent {
+  position: relative;
+  height: 70%;
+  width: 100%;
+  font-size: 6vh;
+  text-align: center;
+  border: 1px solid var(--tertiary);
+  outline: none;
+  box-shadow: 0 10px 19px -9px black,
+              0 0 25px -5px rgba(0, 0, 0, 0.632) inset;
+  border-radius: 5px;
+  transition: ease all 0.5s;
+  overflow: hidden;
+}
+.TypingPage .TypingInputContent:focus {
+  box-shadow: 0 10px 19px -9px black,
+              0 0 25px 0px rgba(0, 0, 0, 0.632) inset;
+}
+@media (max-width: 725px), screen and (max-height: 460px) {
+  .TypingSmall {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 1500px) and (orientation: landscape)  {
+  .TypingSmall {
+    font-size: 3rem;
+
+  }
+}
+@media (max-width: 825px) and (orientation: landscape)  {
+  .TypingSmall {
+    font-size: 1.5rem;
+
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+  .TypingSmall {
+    font-size: 3rem;
+  }
+}

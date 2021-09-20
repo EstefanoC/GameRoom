@@ -1,0 +1,415 @@
+/* Memory Component */
+
+.memoryTable {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color:#c8a691;
+  background: url(../public//bg-memory.jpg) center center no-repeat;
+  background-size: cover;
+  filter: sepia(0.8);
+  transition: ease filter 0.5s;
+  cursor: pointer;
+  overflow: hidden;
+}
+.memoryTable:hover {
+  filter: sepia(0.5);
+}
+.tableUl {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  align-content: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cardMemory {
+  position: relative;
+  width: 60px;
+  height: 70px;
+  perspective: 500px;
+  transition: ease all 0.5s;
+  -webkit-transform-style: preserve-3d;
+  cursor: unset;
+  user-select: none;
+  pointer-events: none;
+}
+.memoryTable:hover .cardMemory:nth-of-type(7),
+.memoryTable.active .cardMemory:nth-of-type(7) {
+  animation: lap 7.8s infinite cubic-bezier(.6,.63,0,1.19);
+}
+.memoryTable:hover .cardMemory,
+.memoryTable.active .cardMemory {
+  animation: roll 7.8s infinite cubic-bezier(.6,.63,0,1.19);
+}
+
+/* back */
+
+.backCard {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--primary);
+  background: rgb(0, 157, 255);
+  box-shadow: -5px 5px 1px 1.5px rgba(0, 0, 0, 0.496);
+  overflow: hidden;
+  backface-visibility: hidden;
+  cursor: unset;
+  user-select: none;
+  pointer-events: none;
+}
+.containerBackCard {
+  position: relative;
+  width: 95%;
+  height: 93%;
+  margin: 5%;
+  border: 1px solid var(--primary);
+  background-color: rgb(85, 189, 253);
+  cursor: unset;
+  user-select: none;
+  pointer-events: none;
+}
+.containerBackCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  display: block;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  border: 1px var(--secondary) dashed;
+  text-align: center;
+  cursor: unset;
+  user-select: none;
+  pointer-events: none;
+}
+.containerFrontCardDetail {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.285);
+  background:repeating-radial-gradient(circle farthest-corner at top left, #3b9d3d90 0%, #ffffff6f 10%, #64ff67a5 20%);
+  cursor: unset;
+  user-select: none;
+  pointer-events: none;
+}
+.TextBackCard {
+  position: absolute;
+  top: 40%;
+  margin: 0;
+  width: 100%;
+  height: auto;
+  font-size: 100%;
+  transform: rotateZ(270deg);
+  color: var(--secondary);
+  text-shadow: 0px 0px 12px white;
+  cursor: unset;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* front */
+.frontCard {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(255, 247, 247);
+  background: radial-gradient(circle, rgb(255, 247, 247) 10%, rgb(122, 255, 131) 150%);
+  border: 1px solid var(--primary);
+  box-shadow: -5px 5px 1px 1.5px rgba(0, 0, 0, 0.496);
+  transform: rotateY(-180deg);
+  backface-visibility: hidden;
+  cursor: unset;
+  user-select: none;
+  pointer-events: none;
+}
+.containerFrontCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  cursor: unset;
+  user-select: none;
+  pointer-events: none;
+}
+.contentFrontCard {
+  font-size: 3em;
+  cursor: unset;
+  user-select: none;
+  pointer-events: none;
+}
+@keyframes roll {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(95%);
+  }
+  80% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+
+}
+@keyframes lap {
+  0% {
+    transform: translateX(0%) rotateY(0deg);
+  }
+  50% {
+    transform: translateX(95%) rotateY(180deg);
+  }
+  80% {
+    transform: translateX(100%) rotateY(180deg);
+  }
+  100% {
+    transform: translateX(0%) rotateY(0deg);
+  }
+}
+
+
+
+/* Transition Helpers */
+
+
+.transitionHomeMemory {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: ease transform 0.5s;
+  border-radius: 100%;
+  z-index: 1;
+  transform: translateY(-120%);
+}
+.memoryTable:hover .transitionHomeMemory,
+.memoryTable.active .transitionHomeMemory {
+  animation: down 8s infinite ease-out;
+}
+.transitionHomeContainerMemory {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary);
+  background: linear-gradient(0deg, #0256a4  0%, #0083FA 50%,#0256a4 100%);
+  box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.415) inset,
+              0 1px 20px 30px rgba(0, 0, 0, 0.762);
+  border: 1px solid var(--primary) ;
+  border-radius: 5px;
+}
+.transitionHomeContainerMemory::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96%;
+  height: 90%;
+  margin: 2%;
+  border: 1px solid var(--primary) ;
+  border-radius: 5px;
+  background: #40ed4315;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.605) inset, 0 0 1px 1px rgba(0, 0, 0, 0.605);
+}
+.transitionHomeTitleMemory {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  font-size: 3em;
+  color: #40ed43;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.796);
+  transform: translate(0, -50%);
+  cursor: unset;
+  user-select: none;
+}
+@keyframes down {
+  0% {
+    transform: translateY(-120%);
+  }
+  50% {
+    transform: translateY(-120%);
+  }
+  80% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-120%);
+  }
+}
+
+
+/* Memory Page */
+
+.memoryPage {
+  display: grid;
+  grid-template-areas: "nav nav"
+                        "main main"
+                        "footer footer";
+  grid-template-rows: 10vh 80vh 10vh;
+  background: url(../public//bg-memory-page.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+.memoryPage .memoryTable {
+  position: relative;
+  width: 96%;
+  height: 94%;
+  padding: 1% 2%;
+  grid-area: main;
+  background: none;
+  filter: none;
+  transition: ease filter 0.5s;
+  cursor: initial;
+}
+.memoryPage .tableUl {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-auto-flow: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.memoryPage .tableUl.hard {
+  grid-template-columns: repeat(10, 1fr);
+}
+.memoryPage .cardMemory {
+  min-height: 70px;
+  cursor: pointer;
+  pointer-events: initial;
+}
+.memoryPage .cardMemory.active {
+  transform: rotateY(160deg);
+}
+.memoryPage .cardMemory.staticActive {
+  transform: rotateY(160deg);
+}
+.memoryPage .cardMemory.staticActive .frontCard {
+  transition: ease-out all 0.5s;
+  filter: brightness(0.5);
+}
+.memoryPage .containerBackCard {
+  cursor: pointer;
+  pointer-events: initial;
+}
+.memoryPage .containerBackCard::before {
+  cursor: pointer;
+  pointer-events: initial;
+}
+.memoryPage .containerFrontCardDetail {
+  cursor: pointer;
+  pointer-events: initial;
+}
+.memoryPage .TextBackCard {
+  cursor: pointer;
+  pointer-events: initial;
+}
+.memoryPage .frontCard {
+  cursor: pointer;
+  pointer-events: initial;
+}
+.memoryPage .containerFrontCard {
+  cursor: pointer;
+  pointer-events: initial;
+}
+.memoryPage .contentFrontCard {
+  cursor: pointer;
+  pointer-events: initial;
+}
+.memoryPage .memoryTable:hover .cardMemory:nth-of-type(7) {
+  animation: none;
+}
+.memoryPage .memoryTable:hover .cardMemory {
+  animation: none;
+}
+
+@media (max-width: 725px), screen and (max-height: 460px) {
+  .memoryPage .memoryTable {
+    overflow-x: auto;
+  }
+  .memoryPage .tableUl {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-flow: row;
+  }
+  .memoryPage .tableUl.hard {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-content: start;
+  }
+}
+@media (max-width: 1500px) and (orientation: landscape)  {
+  .cardMemory {
+    width: 70px;
+    height: 80px;
+  }
+  .memoryPage .memoryTable {
+    overflow-x: auto;
+  }
+  .memoryPage .tableUl {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-flow: row;
+  }
+  .memoryPage .tableUl.hard {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-content: start;
+  }
+}
+@media (max-width: 825px) and (orientation: landscape)  {
+  .memoryPage .memoryTable {
+    overflow-x: auto;
+  }
+  .memoryPage .tableUl {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-flow: row;
+    justify-content: start;
+  }
+  .memoryPage .tableUl.hard {
+    grid-template-columns: repeat(25, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: start;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+  .memoryPage .memoryTable {
+    overflow-x: auto;
+  }
+  .memoryPage .tableUl {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-flow: row;
+  }
+  .memoryPage .tableUl.hard {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-content: start;
+  }
+}

@@ -1,0 +1,573 @@
+.countrySky {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color:rgb(117, 210, 231);
+  background-size: cover;
+  filter: sepia(0.8);
+  transition: ease filter 0.5s;
+  cursor: pointer;
+  overflow: hidden;
+}
+.countrySky:hover {
+  filter: sepia(0.5);
+}
+.flag {
+  position: absolute;
+  left: 20%;
+  bottom: 46%;
+  width: 80px;
+  height: 50px;
+  perspective: 100;
+  transform-style: preserve3d;
+  transform-origin: 0 150px;
+  transform: translate3d(0, 0, 0) rotateZ(0deg) rotateY(-22deg);
+}
+.countrySky:hover .flag,
+.countrySky.active .flag {
+  animation: wave 8s cubic-bezier(0.16, 0.14, 0.82, 0.73) linear infinite;
+}
+.flag:before {
+  position: absolute;
+  content: "";
+  height: 120px;
+  left: -5px;
+  top: -3px;
+  width: 8px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #422;
+  box-shadow: -3px 3px 10px -5px rgba(0, 0, 0, 0.4) inset,
+              0 5px 5px -1px rgba(0, 0, 0, 0.51) ;
+}
+.flagFirstLine {
+  background: #003893;
+}
+.flagSecondLine {
+  background: #ce1126;
+}
+.flagThirdLine {
+  background: #fcd116;
+}
+.flagItem {
+  height: 30.33%;
+  box-sizing: border-box;
+}
+.flagWave {
+  position: absolute;
+  top: 0;
+  left: 8%;
+  width: 90%;
+  height: 90%;
+  background-image: -webkit-gradient(
+    linear,
+    0 -25%,
+    100% top,
+    color-stop(0%, rgba(255, 255, 255, 0)),
+    color-stop(20%, rgba(255, 255, 255, 0)),
+    color-stop(30%, rgba(0, 0, 0, 0.04)),
+    color-stop(40%, rgba(255, 255, 255, 0.2)),
+    color-stop(60%, rgba(255, 255, 255, 0)),
+    color-stop(65%, rgba(255, 255, 255, 0.2)),
+    color-stop(80%, rgba(0, 0, 0, 0.05)),
+    color-stop(100%, rgba(255, 255, 255, 0))
+  );
+  background-size: 200%;
+}
+.countrySky:hover .flagWave,
+.countrySky.active .flagWave {
+  animation: air 8s cubic-bezier(0.16, 0.14, 0.82, 0.73) infinite;
+}
+.floor {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20%;
+  background-color: #27e71c;
+  box-shadow: 0 0 171px -65px rgb(40, 138, 13) inset,
+              0 10px 20px -5px rgba(6, 132, 10, 0.687) inset;
+}
+.mountain1 {
+  position: relative;
+  bottom: 50%;
+  left: 0;
+  width: 60%;
+  height: 50%;
+  border-top-right-radius: 100%;
+  background-color: #56fd4d;
+  box-shadow: 0 0 171px -65px rgb(40, 138, 13) inset,
+              0 -10px 1px -7px rgba(39, 145, 10, 0.53) inset,
+              0 5px 15px -10px rgb(1, 68, 3) inset;
+}
+.mountain2 {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  width: 80%;
+  height: 20%;
+  border-top-left-radius: 100%;
+  background-color: #22bd1a;
+  box-shadow: 0 3px 8px -3px rgba(2, 105, 9, 0.551) inset,
+              0 -3px 10px -5px rgba(10, 123, 36, 0.707) inset;
+}
+.sun {
+	width: 200px;
+  position: absolute;
+  top: 20%;
+  right: 5%;
+	height: 200px;
+	background-color: #FFDE00;
+	border-radius: 50%;
+	box-shadow:
+		0 0 0 20px #FFDE0080,
+		0 0 0 40px #FFDE0040,
+		0 0 0 60px #FFDE0020,
+		0 0 0 80px #FFDE0010,
+		0 0 0 100px #FFDE0000,
+		0 0 40px 100px #FFDE0010;
+}
+.countrySky:hover .sun,
+.countrySky.active .sun {
+	animation: sunrise 2s infinite linear forwards, rays 2s 2s infinite linear;
+}
+.cloudFirst {
+  position: absolute;
+  top: 24%;
+  left: -100%;
+  transform: scale(0.65);
+}
+.countrySky:hover .cloudFirst,
+.countrySky.active .cloudFirst {
+  animation: animateCloud 12s linear infinite;
+}
+.cloudSecond {
+  position: absolute;
+  top: 5%;
+  left: -100%;
+  transform: scale(0.3);
+}
+.countrySky:hover .cloudSecond {
+  animation: animateCloud 20s linear infinite;
+}
+.cloudThird {
+  position: absolute;
+  top: 58%;
+  left: -100%;
+  transform: scale(0.5);
+}
+.countrySky:hover .cloudThird,
+.countrySky.active .cloudThird {
+  animation: animateCloud 35s linear infinite;
+}
+.cloud {
+  background: #fff;
+  border-radius: 100px;
+  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
+  height: 70px;
+  position: relative;
+  width: 250px;
+}
+.cloud:after, .cloud:before {
+  background: #fff;
+  content: '';
+  position: absolute;
+  z-indeX: -1;
+}
+.cloud:after {
+  border-radius: 100px;
+  width: 60px;
+  height: 70px;
+  left: 50px;
+  top: -50px;
+}
+.cloud:before {
+  border-radius: 200px;
+  width: 110px;
+  height: 100px;
+  right: 50px;
+  top: -40px;
+}
+@keyframes wave {
+  0% {
+    box-shadow: 4px 5px 5px 0 rgba(0, 0, 0, 0.1);
+    transform: translate3d(0, 0, 0) rotateZ(0deg) rotateY(22deg);
+  }
+  20% {
+    box-shadow: 4px 5px 15px 0 rgba(0, 0, 0, 0.1);
+    transform: translate3d(0, 0, 0) rotateZ(0deg) rotateY(0deg);
+  }
+  40% {
+    box-shadow: 4px 5px 20px 0 rgba(0, 0, 0, 0.4);
+    transform: translate3d(0, 0, 0) rotateZ(0deg) rotateY(-22deg);
+  }
+  60% {
+    box-shadow: 4px 5px 5px 0 rgba(0, 0, 0, 0.1);
+    transform: translate3d(0, 0, 0) rotateZ(0deg) rotateY(0deg);
+  }
+  80% {
+    box-shadow: 4px 5px 5px 0 rgba(0, 0, 0, 0.3);
+    transform: translate3d(0, 0, 0) rotateZ(0deg) rotateY(16deg);
+  }
+  100% {
+    box-shadow: 4px 5px 5px 0 rgba(0, 0, 0, 0.1);
+    transform: translate3d(0, 0, 0) rotateZ(0deg) rotateY(22deg);
+  }
+}
+@keyframes air {
+  0% {
+    background-position: -200% 0px;
+  }
+  30% {
+    background-position: -60% 5px;
+  }
+  70% {
+    background-position: 70% -5px;
+  }
+  100% {
+    background-position: 200% 0px;
+  }
+}
+@keyframes sunrise {
+	0% {
+		box-shadow: none;
+	}
+}
+@keyframes rays {
+	0% {
+		box-shadow:
+		0 0 0 0 #FFDE0080,
+		0 0 0 20px #FFDE0080,
+		0 0 0 40px #FFDE0040,
+		0 0 0 60px #FFDE0020,
+		0 0 0 80px #FFDE0010,
+		0 0 40px 100px #FFDE0010;
+	}
+	100% {
+		box-shadow:
+		0 0 0 20px #FFDE0080,
+		0 0 0 40px #FFDE0040,
+		0 0 0 60px #FFDE0020,
+		0 0 0 80px #FFDE0010,
+		0 0 0 100px #FFDE0000,
+		0 0 40px 100px #FFDE0010;
+	}
+}
+@keyframes animateCloud {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+
+  /* Transition Helpers */
+
+
+.transitionHomeCountry {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: ease transform 0.5s;
+  border-radius: 100%;
+  z-index: 1;
+  transform: translateY(-120%);
+}
+.countrySky:hover .transitionHomeCountry,
+.countrySky.active .transitionHomeCountry {
+  animation: down 8s infinite ease-out;
+}
+.transitionHomeContainerCountry {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary);
+  background: linear-gradient(0deg, #0256a4  0%, #0083FA 50%,#0256a4 100%);
+  box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.415) inset,
+              0 1px 20px 30px rgba(0, 0, 0, 0.762);
+  border: 1px solid var(--primary) ;
+  border-radius: 5px;
+}
+.transitionHomeContainerCountry::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96%;
+  height: 90%;
+  margin: 2%;
+  border: 1px solid var(--primary) ;
+  border-radius: 5px;
+  background: #40ed4315;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.605) inset, 0 0 1px 1px rgba(0, 0, 0, 0.605);
+}
+.transitionHomeTitleCountry {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  font-size: 3em;
+  color: #40ed43;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.796);
+  transform: translate(0, -50%);
+  cursor: unset;
+  user-select: none;
+}
+.transitionHomeDescriptionCountry {
+  position: absolute;
+  height: 10%;
+  width: 100%;
+  font-size: 1.5rem;
+  left: 0;
+  bottom: 10%;
+  color: #40ed43;
+}
+
+@keyframes down {
+  0% {
+    transform: translateY(-120%);
+  }
+  50% {
+    transform: translateY(-120%);
+  }
+  80% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-120%);
+  }
+}
+
+
+
+/* Page */
+
+.CountryPage {
+  display: grid;
+  grid-template-areas: "nav nav"
+                        "main main"
+                        "footer footer";
+  grid-template-rows: 10vh 80vh 10vh;
+  background-color:rgb(117, 210, 231);
+  background-size: cover;
+}
+.CountryPage .CountryTable {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  grid-area: main;
+  background: none;
+  filter: none;
+  cursor: initial;
+}
+.CountryPage .CountryContent {
+  position: relative;
+  text-align: center;
+  height: 94%;
+  width: 96%;
+  max-width: 100vw;
+  padding: 1% 2%;
+}
+.CountryPage .CountryTable .sun {
+	animation: sunrise 2s infinite linear forwards, rays 2s 2s infinite linear;
+}
+.CountryPage .CountryTable .cloudFirst {
+  animation: animateCloud 20s linear infinite;
+}
+.CountryPage .CountryTable .cloudSecond {
+  animation: animateCloud 35s linear infinite;
+}
+.CountryPage .CountryTable .cloudThird {
+  animation: animateCloud 50s linear infinite;
+}
+.CountryPage .CountryHeader {
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.CountryPage .CountryTitle,
+.CountryPage .CountryTitle2 {
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 0.2rem 2rem;
+  border-radius: 5px;
+  background: var(--secondaryOpacity);
+  border-bottom: 0.5px solid var(--primary);
+  box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.721);
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.639);
+}
+.CountryPage .CountryTitle2 {
+  text-transform: capitalize;
+  margin-left: 10rem;
+}
+.CountryPage .CountryTitleSpan {
+  text-transform: capitalize;
+}
+.CountryPage .CountryFlex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.CountryPage .tableUl {
+  width: 100%;
+  height: 85%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-auto-flow: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid va(--primary);
+  border-radius: 5px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.CountryPage .tableUl.hard {
+  grid-template-columns: repeat(10, 1fr);
+}
+.CountryPage .cardCountry {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  transition: ease all 0.5s;
+}
+.CountryPage .cardCountry:hover {
+  transform: scale(1.1);
+}
+.CountryPage .cardCountry:active {
+  transform: scale(1.2);
+}
+.CountryPage .cardCountry.active:active,
+.CountryPage .cardCountry.active:hover {
+  transform: scale(1);
+  cursor: inherit;
+}
+.CountryPage .cardCountry::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: red;
+  border-radius: 100%;
+  transform: scale(0);
+  opacity: 1;
+  transition: ease-out all 0.5s;
+}
+.CountryPage .cardCountry.failed::after {
+  animation: failed normal 0.5s;
+}
+.CountryPage .cardCountry > img {
+  cursor: pointer;
+  pointer-events: none;
+  user-select: none;
+  background: rgb(0,0,0);
+  background: radial-gradient(circle, rgba(0,0,0,0.5473687675561798) 0%, rgba(0,0,0,0) 70%);
+  transition: ease all 0.5s;
+}
+.CountryPage .cardCountry.active > img {
+  filter: brightness(0.5);
+}
+
+@keyframes failed {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 725px), screen and (max-height: 460px) {
+  .flag {
+    bottom: 28%;
+  }
+  .CountryPage .CountryHeader {
+    height: 15%;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .CountryPage .CountryTitle,
+  .CountryPage .CountryTitle2 {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0.3rem 0.3rem;
+  }
+  .CountryPage .tableUl {
+    width: 100%;
+    height: 85%;
+    display: grid;
+    grid-gap: 0 1rem;
+    grid-auto-flow: row;
+    justify-content: start;
+    overflow-x: auto;
+  }
+}
+@media (max-width: 1500px) and (orientation: landscape)  {
+  .CountryPage .tableUl {
+    width: 100%;
+    height: 85%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+  .CountryPage .tableUl.hard {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
+@media (max-width: 825px) and (orientation: landscape)  {
+  .CountryPage .CountryHeader {
+    height: 15%;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .CountryPage .tableUl {
+    width: 100%;
+    height: 85%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 0 1rem;
+    grid-auto-flow: row;
+    justify-content: start;
+    overflow-x: auto;
+  }
+  .CountryPage .tableUl.hard {
+    grid-template-columns: repeat(17, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+  .CountryPage .tableUl {
+    width: 100%;
+    height: 85%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+  .CountryPage .tableUl.hard {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}

@@ -1,0 +1,519 @@
+.tictacPaper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #c5c5c5;
+  background: url(../public//bg-Tictac.jpg) center center no-repeat;
+  background-size: cover;
+  filter: sepia(0.8);
+  transition: ease filter 0.5s;
+  cursor: pointer;
+  overflow: hidden;
+}
+.tictacPaper:hover {
+  filter: sepia(0.5);
+}
+.tictac {
+  position: relative;
+  align-self: center;
+  display: flex;
+  min-width: 216px;
+  max-width: 316px;
+  width: 43%;
+  min-height: 216px;
+  max-height: 316px;
+  height: 50%;
+  border-spacing: 5px;
+}
+.tictacTableBody,
+.tictacTableSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 216px;
+  max-width: 316px;
+  width: 43%;
+  min-height: 216px;
+  max-height: 316px;
+  height: 50%;
+}
+.tictacTableSvg {
+  transform: translate(0px, -13px);
+}
+.tictacTableSvg [data-path] {
+  transition: ease all 0.5s;
+  stroke: rgba(84, 84, 84, 0.761);
+  stroke-dasharray: 100%;
+  stroke-dashoffset: -105;
+  stroke-linecap: square;
+}
+.tictacPaper:hover .tictacTableSvg [data-path="1"],
+.tictacPaper.active .tictacTableSvg [data-path="1"] {
+  animation: pathTable 0.3s forwards linear;
+}
+.tictacPaper:hover .tictacTableSvg [data-path="3"],
+.tictacPaper.active .tictacTableSvg [data-path="3"] {
+  animation: pathTableReverse 0.3s forwards linear 0.3s ;
+}
+.tictacPaper:hover .tictacTableSvg [data-path="2"],
+.tictacPaper.active .tictacTableSvg [data-path="2"] {
+  animation: pathTable 0.3s forwards linear 0.6s ;
+}
+.tictacPaper:hover .tictacTableSvg [data-path="4"],
+.tictacPaper.active .tictacTableSvg [data-path="4"] {
+  animation: pathTableReverse 0.3s forwards linear 0.9s ;
+}
+.tictacPaper:hover .tictacTableSvg [data-path="5"],
+.tictacPaper.active .tictacTableSvg [data-path="5"] {
+  animation: pathTable 0.3s forwards linear 1.2s ;
+}
+.tictacPaper:hover .tictacTableSvg [data-path="7"],
+.tictacPaper.active .tictacTableSvg [data-path="7"] {
+  animation: pathTableReverse 0.3s forwards linear 1.5s ;
+}
+.tictacPaper:hover .tictacTableSvg [data-path="6"],
+.tictacPaper.active .tictacTableSvg [data-path="6"] {
+  animation: pathTable 0.3s forwards linear 1.8s ;
+}
+.tictacPaper:hover .tictacTableSvg [data-path="8"],
+.tictacPaper.active .tictacTableSvg [data-path="8"] {
+  animation: pathTableReverse 0.3s forwards linear 2.1s ;
+}
+.tictacCell {
+  position: relative;
+  outline: none;
+  height: 48px;
+  padding: 8px;
+  vertical-align: top;
+  width: 48px;
+  overflow: hidden;
+}
+.tictacTableOX {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  stroke: rgba(84, 84, 84, 0.761);
+  stroke-width: 5px;
+  stroke-linecap: square;
+  transition: ease all 0.5s;
+}
+.tictacPaper:hover .tictacTableOX[aria-label="X"][data-value="5"] :first-child,
+.tictacPaper.active .tictacTableOX[aria-label="X"][data-value="5"] :first-child {
+  animation: X 0.25s forwards linear 2.4s;
+}
+.tictacPaper:hover .tictacTableOX[aria-label="X"][data-value="5"] :last-child,
+.tictacPaper.active .tictacTableOX[aria-label="X"][data-value="5"] :last-child {
+  animation: X 0.25s forwards linear 2.9s;
+}
+.tictacPaper:hover .tictacTableOX[aria-label="O"][data-value="7"] :first-child,
+.tictacPaper.active .tictacTableOX[aria-label="O"][data-value="7"] :first-child {
+  animation: O 0.5s forwards linear 3.4s;
+}
+@keyframes pathTable {
+  0% {
+    stroke-dasharray: 100%;
+    stroke-dashoffset: -105;
+  }
+  100% {
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes pathTableReverse {
+  0% {
+    stroke-dasharray: 92%;
+    stroke-dashoffset: 200;
+  }
+  100% {
+    stroke-dasharray: 150%;
+    stroke-dashoffset: 200;
+  }
+}
+@keyframes X {
+  0% {
+    visibility: visible;
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 120;
+  }
+  100% {
+    visibility: visible;
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes O {
+  0% {
+    visibility: visible;
+    stroke-dasharray: 240%;
+    stroke-dashoffset: 150;
+  }
+  100% {
+    visibility: visible;
+    stroke-dasharray: 500%;
+    stroke-dashoffset: 150;
+  }
+}
+
+
+
+
+/* Transition Helpers */
+
+
+.transitionHomeTictac {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: ease transform 0.5s;
+  border-radius: 100%;
+  z-index: 1;
+  transform: translateY(-120%);
+}
+.transitionHomeTictac:hover ~ .tictac .tictacTableSvg [data-path="1"],
+.transitionHomeTictac:hover ~ .tictac .tictacTableSvg [data-path="2"],
+.transitionHomeTictac:hover ~ .tictac .tictacTableSvg [data-path="3"],
+.transitionHomeTictac:hover ~ .tictac .tictacTableSvg [data-path="4"],
+.transitionHomeTictac:hover ~ .tictac .tictacTableSvg [data-path="5"],
+.transitionHomeTictac:hover ~ .tictac .tictacTableSvg [data-path="6"],
+.transitionHomeTictac:hover ~ .tictac .tictacTableSvg [data-path="7"],
+.transitionHomeTictac:hover ~ .tictac .tictacTableSvg [data-path="8"],
+.transitionHomeTictac.active ~ .tictac .tictacTableSvg [data-path="1"],
+.transitionHomeTictac.active ~ .tictac .tictacTableSvg [data-path="2"],
+.transitionHomeTictac.active ~ .tictac .tictacTableSvg [data-path="3"],
+.transitionHomeTictac.active ~ .tictac .tictacTableSvg [data-path="4"],
+.transitionHomeTictac.active ~ .tictac .tictacTableSvg [data-path="5"],
+.transitionHomeTictac.active ~ .tictac .tictacTableSvg [data-path="6"],
+.transitionHomeTictac.active ~ .tictac .tictacTableSvg [data-path="7"],
+.transitionHomeTictac.active ~ .tictac .tictacTableSvg [data-path="8"] {
+  animation: empty;
+}
+.transitionHomeTictac:hover ~ .tictac .tictacTableOX[aria-label="X"][data-value="5"] :first-child,
+.transitionHomeTictac:hover ~ .tictac .tictacTableOX[aria-label="X"][data-value="5"] :last-child,
+.transitionHomeTictac:hover ~ .tictac .tictacTableOX[aria-label="O"][data-value="7"] :first-child,
+.transitionHomeTictac.active ~ .tictac .tictacTableOX[aria-label="X"][data-value="5"] :first-child,
+.transitionHomeTictac.active ~ .tictac .tictacTableOX[aria-label="X"][data-value="5"] :last-child,
+.transitionHomeTictac.active ~ .tictac .tictacTableOX[aria-label="O"][data-value="7"] :first-child {
+  animation: empty;
+}
+.tictacPaper:hover .transitionHomeTictac,
+.tictacPaper.active .transitionHomeTictac {
+  animation: down 8s infinite ease-out;
+}
+.transitionHomeContainerTictac {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary);
+  background: linear-gradient(0deg, #0256a4  0%, #0083FA 50%,#0256a4 100%);
+  box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.415) inset,
+              0 1px 20px 30px rgba(0, 0, 0, 0.762);
+  border: 1px solid var(--primary) ;
+  border-radius: 5px;
+}
+.transitionHomeContainerTictac::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96%;
+  height: 90%;
+  margin: 2%;
+  border: 1px solid var(--primary) ;
+  border-radius: 5px;
+  background: #40ed4315;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.605) inset, 0 0 1px 1px rgba(0, 0, 0, 0.605);
+}
+.transitionHomeTitleTictac {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  font-size: 3em;
+  color: #40ed43;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.796);
+  transform: translate(0, -50%);
+  cursor: unset;
+  user-select: none;
+}
+@keyframes empty {}
+@keyframes down {
+  0% {
+    transform: translateY(-120%);
+  }
+  50% {
+    transform: translateY(-120%);
+  }
+  80% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-120%);
+  }
+}
+
+/* Tictac Page */
+
+.TictacPage {
+  display: grid;
+  grid-template-areas: "nav nav"
+                        "main main"
+                        "footer footer";
+  grid-template-rows: 10vh 80vh 10vh;
+  background: url(../public//bg-Tictac-page.jpg) center center no-repeat;
+  background-size: cover;
+}
+.TictacPage .TictacTable {
+  position: relative;
+  width: 96%;
+  height: 94%;
+  padding: 1% 2%;
+  grid-area: main;
+  background: none;
+  filter: none;
+  cursor: initial;
+}
+.TictacPage .TictacTitle {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  margin: 0;
+  font-size: 5rem;
+  transform: translate(0, -50%);
+  transition: ease-in-out all 0.5s;
+  opacity: 0;
+}
+.TictacPage .TictacTitle.active {
+  opacity: 1;
+}
+.TictacPage .TictacContent {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.TictacPage .tictac {
+  width: 216px;
+  height: 216px;
+}
+.TictacPage .tictacTableSvg [data-path] {
+  transition: ease all 0.5s;
+  stroke: rgba(84, 84, 84, 0.761);
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 0;
+  stroke-linecap: square;
+}
+.TictacPage .tictacTableLineSvg > line {
+  transition: ease all 1s;
+  stroke: rgba(84, 84, 84, 0.761);
+  stroke-dasharray: 141%;
+  stroke-dashoffset: -141%;
+  stroke-linecap: square;
+  visibility: hidden;
+}
+.TictacPage .tictacTableLineSvg > line.active {
+  stroke: rgba(84, 84, 84, 0.761);
+  stroke-dasharray: 141%;
+  stroke-dashoffset: 0;
+  stroke-linecap: square;
+  visibility: visible;
+}
+.TictacPage .tictacTableSvg {
+  transform: translate(0px, -10px);
+}
+.TictacPage .tictacTableBody,
+.TictacPage .tictacTableSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 216px;
+  height: 216px;
+}
+.TictacPage .tictacCell {
+  cursor: pointer;
+}
+.TictacPage .tictacCell.cancelO
+.TictacPage .tictacCell.cancelX {
+  cursor: inherit;
+}
+.TictacPage .tictacTableOX {
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  stroke: rgba(84, 84, 84, 0.761);
+  stroke-width: 5px;
+  stroke-linecap: square;
+  transition: ease all 0.5s;
+}
+.TictacPage .tictacTableOX[aria-label="X"] :first-child,
+.TictacPage .tictacTableOX[aria-label="X"] :last-child,
+.TictacPage .tictacTableOX[aria-label="O"] :first-child {
+  animation: empty;
+}
+.TictacPage .cancelX .tictacTableOX[aria-label="X"] > path {
+  animation: X 0.25s forwards linear;
+}
+.TictacPage .cancelO .tictacTableOX[aria-label="O"] > circle {
+  animation: O 0.5s forwards linear;
+}
+
+
+/* Pencil */
+.TictacPage .pencil{
+	position: absolute;
+  left: 5%;
+  top: 5%;
+	height: 100%;
+	width: 60px;
+  transform: rotate(15deg);
+}
+.TictacPage .pencilLeft, .TictacPage .pencilCenter, .TictacPage .pencilRight{
+	display: inline-block;
+	height: 60%;
+	float: left;
+}
+.TictacPage .pencilLeft, .TictacPage .pencilRight{
+	width: 15px;
+	position: relative;
+}
+.TictacPage .pencilLeft{
+  background: linear-gradient(to left, #f2d41c, #e1c413);
+}
+.TictacPage .pencilRight{
+  box-shadow: 0 0 48px -30px black inset;
+  background: linear-gradient(to left, #f2d41c, #e1c413);
+}
+.TictacPage .pencilCenter{
+	width: 30px;
+	background: #f9dc32;
+	position: relative;
+	color: #000;
+}
+.TictacPage .pencilTop{
+	position: relative;
+}
+.TictacPage .pencilBottom{
+  position: relative;
+	clear: both;
+	height: 20px;
+  background: #bf8f00;
+	border-radius: 0 0 10px 10px;
+}
+.TictacPage .pencilTop{
+	border-bottom: 60px solid #ffe8c6;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+}
+.TictacPage .pencilTop:before{
+	content: "";
+	display: block;
+	position: absolute;
+	left: -10px;
+	border-bottom: 20px solid #000;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+}
+.TictacPage .pencilCenter:before{
+	position: absolute;
+	content: "";
+	display: block;
+	color: #000;
+	top: -10px;
+	border-bottom: 10px solid #f9dc32;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+}
+.TictacPage .pencilLeft:before{
+	position: absolute;
+	content: "";
+	display: block;
+	color: #000;
+	top: -7px;
+	border-bottom: 7px solid #f2d41c;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+}
+.TictacPage .pencilRight:before{
+	position: absolute;
+	content: "";
+	display: block;
+	color: #000;
+	top: -7px;
+}
+.TictacPage .pencilRight:after{
+	content: "";
+	position: absolute;
+  top: 0;
+  right: -65%;
+  height: 100%;
+  width: 65%;
+	display: block;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: #0000005c;
+}
+.TictacPage .pencilBottom:before{
+	content: "";
+	position: absolute;
+  bottom: 50%;
+  right: 50%;
+  transform: translate( 50%, 50% );
+  height: 8px;
+  width: 20%;
+	display: block;
+  border-radius: 100%;
+  background: #000000e7;
+}
+.TictacPage .pencilBottom:after{
+	content: "";
+	position: absolute;
+  bottom: 0;
+  right: -17%;
+  height: 20px;
+  width: 30%;
+	display: block;
+  border-radius: 0px;
+  background: #0000005c;
+}
+
+@media (max-width: 725px), screen and (max-height: 460px) {
+  .TictacPage .pencil{
+    display: none;
+  }
+}
+@media (max-width: 1500px) and (orientation: landscape)  {
+  .TictacPage .pencil{
+    display: block;
+  }
+}
+@media (max-width: 825px) and (orientation: landscape)  {
+  .TictacPage .pencil{
+    display: none;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+  .TictacPage .pencil{
+    display: block;
+  }
+}

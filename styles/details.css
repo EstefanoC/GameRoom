@@ -1,0 +1,9 @@
+.carousel-root, .carousel-slider, .slider-wrapper, .slider-wrapper > .slider {
+  height: 100%;
+}
+.fadeOutMachine {
+  transform: scale(1.5);
+}
+.fadeInMachine {
+  transform: scale(1);
+}
