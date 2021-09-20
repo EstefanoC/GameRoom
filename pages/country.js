@@ -5,15 +5,15 @@ import Head from 'next/head'
 import { CountryPage, CountryTable, sun, floor, mountain1, mountain2, cloudFirst, cloudSecond, cloudThird, cloud  } from '../styles/Country.module.css'
 
 // Context
-import SettingsContext from '../data/context/context'
+import SettingsContext from '../data/context/context.jsx'
 
 // Component
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import CountryIndex from '../components/Country'
+import Navbar from '../components/Navbar/index.jsx'
+import Footer from '../components/Footer/index.jsx'
+import CountryIndex from '../components/Country/index.jsx'
 
 // Routes / Data
-import { Routes } from '../routes'
+import { Routes } from '../routes/index.js'
 import dataCountry from '../data/country.json'
 
 export const getStaticProps = async () => {

@@ -5,15 +5,15 @@ import Head from 'next/head'
 import { TictacPage, TictacTable, pencil, pencilTop, pencilRight, pencilCenter, pencilLeft, pencilBottom } from '../styles/Tictactoe.module.css'
 
 // Context
-import SettingsContext from '../data/context/context'
+import SettingsContext from '../data/context/context.jsx'
 
 // Component
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import TictacIndex from '../components/Tictactoe'
+import Navbar from '../components/Navbar/index.jsx'
+import Footer from '../components/Footer/index.jsx'
+import TictacIndex from '../components/Tictactoe/index.jsx'
 
 // Routes
-import { Routes } from '../routes'
+import { Routes } from '../routes/index.js'
 
 
 export const getStaticProps = async () => {

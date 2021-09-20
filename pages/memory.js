@@ -8,12 +8,12 @@ import { memoryPage, memoryTable } from '../styles/Memory.module.css'
 import SettingsContext from '../data/context/context'
 
 // Component
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import MemoryIndex from '../components/Memory/Index'
+import Navbar from '../components/Navbar/index.jsx'
+import Footer from '../components/Footer/index.jsx'
+import MemoryIndex from '../components/Memory/index.jsx'
 
 // Routes / Data
-import { Routes } from '../routes'
+import { Routes } from '../routes/index.js'
 import dataMemory from '../data/memory.json'
 
 

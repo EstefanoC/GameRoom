@@ -3,17 +3,12 @@ import { useCallback, useEffect, useState } from 'react'
 // Css
 import { tableUl, hard } from '../../styles/Memory.module.css'
 
-// Data
-// import dataMemory from '../../data/memory.json'
-
 // Components
 import MemoryLi from './MemoryLi'
 
 // helpers
 import Alert from '../Helpers/Alert'
 import { randomPosition } from '../Helpers/Function'
-
-
 
 
 function MemoryUl({ settings, finishGame, dataMemory }) {

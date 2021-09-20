@@ -4,17 +4,17 @@ import {useRouter} from 'next/router'
 import styles from '../styles/Home.module.css'
 
 // Component
-import Memory from '../components/home/Memory'
-import Tictactoe from '../components/home/Tictactoe'
-import Typing from '../components/home/Typing'
-import Country from '../components/home/Country'
+import Memory from '../components/Home/Memory.jsx'
+import Tictactoe from '../components/Home/Tictactoe.jsx'
+import Typing from '../components/Home/Typing.jsx'
+import Country from '../components/Home/Country.jsx'
 
 // Npm
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 // Routes / Data
-import { Routes } from '../routes'
+import { Routes } from '../routes/index.js'
 import dataMemory from '../data/memory.json'
 
 

@@ -8,13 +8,14 @@ import { TypingPage, TypingTable } from '../styles/Typing.module.css'
 import SettingsContext from '../data/context/context'
 
 // Component
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import TypingIndex from '../components/Typing/Index'
+import Navbar from '../components/Navbar/index.jsx'
+import Footer from '../components/Footer/index.jsx'
+import TypingIndex from '../components/Typing/index.jsx'
 
 // Routes / Data
-import { Routes } from '../routes'
+import { Routes } from '../routes/index.js'
 import dataWords from '../data/typing.json'
+
 
 export const getStaticProps = async () => {
   return {
