@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   background-color:#c8a691;
-  background: url(../public//bg-memory.jpg) center center no-repeat;
+  background: url("../public/bg-memory.jpg") center center no-repeat;
   background-size: cover;
   filter: sepia(0.8);
   transition: ease filter 0.5s;
@@ -265,7 +265,7 @@
                         "main main"
                         "footer footer";
   grid-template-rows: 10vh 80vh 10vh;
-  background: url(../public//bg-memory-page.jpg) center center no-repeat;
+  background: url("../public/bg-memory-page.jpg") center center no-repeat;
   background-size: cover;
 }
 
