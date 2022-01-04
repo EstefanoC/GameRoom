@@ -150,6 +150,7 @@
   cursor: unset;
   user-select: none;
   pointer-events: none;
+  font-weight: normal;
 }
 @keyframes roll {
   0% {
